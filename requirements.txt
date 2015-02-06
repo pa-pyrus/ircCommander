@@ -3,4 +3,5 @@ pyOpenSSL>=0.14
 pyasn1>=0.1.7
 pycrypto>=2.6.1
 pytz>=2014.10
+service-identity>=14.0.0
 trueskill>=0.4.3
