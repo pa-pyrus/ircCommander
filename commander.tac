@@ -1,6 +1,16 @@
 #!/usr/bin/env twistd
 # vim:fileencoding=utf-8:ts=8:et:sw=4:sts=4:tw=79:ft=python
 
+"""
+commander.tac
+
+Twisted service description file.
+It sets up logging, the IRC client and an (optional) SSH manhole.
+
+Copyright (c) 2015 Pyrus <pyrus at coffee dash break dot at>
+See the file LICENSE for copying permission.
+"""
+
 from twisted.application import internet, service
 from twisted.conch import manhole, manhole_ssh
 from twisted.conch.checkers import SSHPublicKeyDatabase
