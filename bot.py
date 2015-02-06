@@ -211,7 +211,7 @@ class CommanderBot(irc.IRCClient):
                     "!twitter [3|5]",
                     "!tourney [next|last]",
                     "!patch", "!news",
-                    "!exodus", "!king",
+                    "!exodus",
                     "!now", "!roll [[<n>]d<n>]")
 
         self.msg(channel, u"Available commands: "
@@ -337,13 +337,6 @@ class CommanderBot(irc.IRCClient):
             league = initial_dict[args[0]]
 
         self.leader.top(league).addCallback(self.tell_top, channel, league)
-
-    def handle_command_king(self, channel, nick, args):
-        """
-        Handle !king command.
-        Trigger an update on self.misc and print the current KotP.
-        """
-        self.misc.king().addCallback(self.tell_king, channel)
 
     def handle_command_twitch(self, channel, nick, args):
         """
@@ -567,37 +560,6 @@ class CommanderBot(irc.IRCClient):
 
         self.msg(channel, u"1on1 \x02{0}\x02 Leaderboard: {1}".format(
                           league.capitalize(), ", ".join(top_n_str)))
-
-    def tell_king(self, king, channel):
-        """Write the current King of the Planet to channel."""
-        if not king:
-            self.msg(channel, u"\x02King of the Planet\x02: "
-                              u"Cannot determine current regent.")
-            return
-
-        good = ["Able", "Adventurous", "Blessed", "Brave", "Conqueror",
-                "Enlightened", "Fair", "Fearless", "Gallant", "Graceful",
-                "Great", "Handsome", "Invincible", "Just", "Kind", "Liberator",
-                "Lion", "Magnificent", "Mighty", "Popular", "Prudent",
-                "Restorer", "Righteous", "Savior", "Strong", "Valiant",
-                "Victorious", "Well-Beloved", "Wise"]
-        bad = ["Accursed", "Bald", "Bastard", "Black", "Careless", "Crosseyed",
-               "Cruel", "Damned", "Drunkard", "Fat", "Executioner",
-               "Hunchback", "Impaler", "Impotent", "Lame", "Mad", "Madman",
-               "Oppressor", "Outlaw", "Pale", "Quareller", "Red", "Simple",
-               "Spider", "Stammerer", "Terrible", "Trembling", "Tyrant",
-               "Unlucky", "Usurper", "Vain", "Weak", "Wicked"]
-
-        self.msg(channel, u"\ud83d\udcdc Hear Ye, Hear Ye! "
-                          u"All hail His Imperial Majesty "
-                          u"\ud83d\udc51 \x02{0}\x02 the {1}, "
-                          u"First of His Name, "
-                          u"Slayer of \x02{2}\x02 the {3}, "
-                          u"King of the Planet! ({4})".format(king["name"],
-                                                              choice(good),
-                                                              king["old"],
-                                                              choice(bad),
-                                                              king["url"]))
 
     def tell_streams(self, streams, channel):
         """Write streams to channel."""
