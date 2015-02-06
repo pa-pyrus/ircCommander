@@ -15,7 +15,7 @@ class LeaderParser(object):
     """
 
     def __init__(self):
-        """Read configuration from a file or store defaults."""
+        """Initialize a database session."""
         log.msg("Initializing Ubernet Leaderboard parser.")
         self.session = Session()
 
