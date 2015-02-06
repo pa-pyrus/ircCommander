@@ -1,4 +1,6 @@
-pytz==2014.10
-trueskill==0.4.3
-Twisted==15.0.0
-zope.interface==4.1.2
+Twisted>=15.0.0
+pyOpenSSL>=0.14
+pyasn1>=0.1.7
+pycrypto>=2.6.1
+pytz>=2014.10
+trueskill>=0.4.3
