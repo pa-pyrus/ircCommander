@@ -19,30 +19,9 @@ class LeaderParser(object):
         log.msg("Initializing Ubernet Leaderboard parser.")
         self.session = Session()
 
-    def startUpdate(self):
-        """
-        Initiate an update using Twisted.
-
-        The request is handled asynchronously. It will call onUpdate if it's
-        successful and onError otherwise.
-        """
-        deferred = succeed(None)
-        deferred.addCallbacks(self.onUpdate, self.onError)
-        return deferred
-
-    def onUpdate(self, value):
-        """Patches are updated by a cronjob, no need to do it here."""
-        return None
-
-    def onError(self, error):
-        """Error callback for retrieving Uberent API data."""
-        log.err("Encountered an error: {0}".format(
-            error.getErrorMessage()))
-        return error
-
     def top(self, league):
         """Start an update and return a deferred containing the results."""
-        updateDeferred = self.startUpdate()
+        updateDeferred = succeed(None)
         newDeferred = Deferred()
 
         league = league.capitalize()
