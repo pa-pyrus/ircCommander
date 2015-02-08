@@ -26,7 +26,7 @@ def __get_irc_config():
             "nickname": environ["COMMANDER_IRC_NICKNAME"],
             "username": environ["COMMANDER_IRC_USERNAME"],
             "realname": environ["COMMANDER_IRC_REALNAME"],
-            "linerate": environ["COMMANDER_IRC_LINERATE"],
+            "linerate": int(environ["COMMANDER_IRC_LINERATE"]),
             "channels": channels}
 
 
