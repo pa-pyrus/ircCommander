@@ -33,7 +33,7 @@ class MiscParser(object):
         url = "{0}?{1}".format(UBERNET_NEWS_URL, urlencode({"titleid": 4,
                                                             "count": count}))
         deferred = getPage(url)
-        deferred.addCallbacks(self.onNewsUpdate, self.onError)
+        deferred.addCallback(self.onNewsUpdate)
         return deferred
 
     def onNewsUpdate(self, value):
