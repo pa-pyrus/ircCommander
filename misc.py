@@ -29,9 +29,9 @@ class MiscParser(object):
         The request is handled asynchronously. It will call onUpdate if it's
         successful and onError otherwise.
         """
-        log.msg("Updating URL contents for: {0}".format(self.news_url))
-        url = "{0}?{1}".format(self.news_url, urlencode({"titleid": 4,
-                                                         "count": count}))
+        log.msg("Updating URL contents for: {0}".format(UBERNET_NEWS_URL))
+        url = "{0}?{1}".format(UBERNET_NEWS_URL, urlencode({"titleid": 4,
+                                                            "count": count}))
         deferred = getPage(url)
         deferred.addCallbacks(self.onNewsUpdate, self.onError)
         return deferred

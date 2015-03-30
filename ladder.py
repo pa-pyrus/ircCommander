@@ -79,7 +79,7 @@ class LadderParser(object):
                 newDeferred.callback(None)
             else:
                 player_url = ("{0}?{1}"
-                              .format(self.player_url,
+                              .format(PASTATS_PLAYER_URL,
                                       urlencode({"player": player.pid})))
                 w, d, l = player.wdl
                 newDeferred.callback((player.name, w, d, l, player_url))
