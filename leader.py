@@ -32,7 +32,8 @@ class LeaderParser(object):
                                           UberAccount.dname)
                            .outerjoin(UberAccount,
                                       UberAccount.uid == LeaderBoardEntry.uid)
-                           .filter(LeaderBoardEntry.league == league)
+                           .filter(LeaderBoardEntry.game == "Titans",
+                                   LeaderBoardEntry.league == league)
                            .order_by(LeaderBoardEntry.rank))
 
             newDeferred.callback([e[1] for e in entries])
